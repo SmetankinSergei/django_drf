@@ -2,9 +2,12 @@ from django.db import models
 from django.db.models import CASCADE
 
 
+NULLABLE = {'null': True, 'blank': True}
+
+
 class Course(models.Model):
     name = models.CharField(max_length=250)
-    preview = models.ImageField(upload_to='courses/previews/')
+    preview = models.ImageField(upload_to='courses/previews/', **NULLABLE)
     description = models.TextField()
 
     def __str__(self):
@@ -20,4 +23,3 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.name
-    
